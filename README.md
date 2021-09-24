@@ -2,7 +2,7 @@
 
 PostreSQL公式Dockerイメージにサンプルデータベース([PostgreSQL Sample Database](https://www.postgresqltutorial.com/postgresql-sample-database/))を作成し、使用できるようにします。
 
-## Dockerコンテナを準備
+## Dockerイメージを作成
 
 1. Dockerイメージを作成します。
 
@@ -18,6 +18,25 @@ PostreSQL公式Dockerイメージにサンプルデータベース([PostgreSQL S
         -e POSTGRES_PASSWORD=mysecretpassword \
         postgres/dvdrental:latest
     ```
+
+## Docker HubからDockerイメージをプル
+
+1. Docker HubからDockerイメージをプルします。
+
+    ```shell
+    docker pull cmfujikawa/dvdrental
+    ```
+
+1. Dockerコンテナを起動します。
+
+    ```shell
+    docker run --rm -it -d \
+        -p 5432:5432/tcp \
+        -e POSTGRES_PASSWORD=mysecretpassword \
+        cmfujikawa/dvdrental
+    ```
+
+## 共通
 
 1. コンテナIDを確認します。
 
