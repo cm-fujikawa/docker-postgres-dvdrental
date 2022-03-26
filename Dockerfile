@@ -1,9 +1,4 @@
-FROM postgres:latest
-
-RUN apt update && \
-    apt install -y wget unzip --no-install-recommends && \
-    apt clean -y && \
-    rm -rf /var/lib/apt/lists/*
+FROM postgres:alpine
 
 WORKDIR /docker-entrypoint-initdb.d
 
