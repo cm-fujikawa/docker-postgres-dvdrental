@@ -7,16 +7,7 @@ PostreSQL公式Dockerイメージにサンプルデータベース([PostgreSQL S
 1. Dockerイメージを作成します。
 
     ```shell
-    docker build -t postgres/dvdrental:latest .
-    ```
-
-1. Dockerコンテナを起動します。
-
-    ```shell
-    docker run --rm -it -d \
-        -p 5432:5432/tcp \
-        -e POSTGRES_PASSWORD=mysecretpassword \
-        postgres/dvdrental:latest
+    docker build -t cmfujikawa/dvdrental:latest .
     ```
 
 ## Docker HubからDockerイメージをプル
@@ -24,8 +15,10 @@ PostreSQL公式Dockerイメージにサンプルデータベース([PostgreSQL S
 1. Docker HubからDockerイメージをプルします。
 
     ```shell
-    docker pull cmfujikawa/dvdrental
+    docker pull cmfujikawa/dvdrental:latest
     ```
+
+## 共通
 
 1. Dockerコンテナを起動します。
 
@@ -33,21 +26,14 @@ PostreSQL公式Dockerイメージにサンプルデータベース([PostgreSQL S
     docker run --rm -it -d \
         -p 5432:5432/tcp \
         -e POSTGRES_PASSWORD=mysecretpassword \
-        cmfujikawa/dvdrental
-    ```
-
-## 共通
-
-1. コンテナIDを確認します。
-
-    ```shell
-    docker ps
+        --name dvdrental \
+        cmfujikawa/dvdrental:latest
     ```
 
 1. コンテナに接続します。
 
     ```shell
-    docker exec -it 23483394b170 /bin/sh
+    docker exec -it dvdrental /bin/sh
     ```
 
 ## PostgreSQLサーバに接続
@@ -93,5 +79,5 @@ PostreSQL公式Dockerイメージにサンプルデータベース([PostgreSQL S
 1. コンテナを停止します。
 
     ```shell
-    docker stop 23483394b170
+    docker stop dvdrental
     ```
