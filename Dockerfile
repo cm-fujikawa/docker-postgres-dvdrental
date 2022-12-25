@@ -1,4 +1,4 @@
-FROM postgres:latest
+FROM postgres:15.1
 
 RUN apt update && \
     apt install -y wget unzip --no-install-recommends && \
