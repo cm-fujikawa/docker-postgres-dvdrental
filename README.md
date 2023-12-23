@@ -7,7 +7,7 @@ PostreSQL公式Dockerイメージにサンプルデータベース([PostgreSQL S
 1. Dockerイメージを作成します。
 
     ```shell
-    docker build -t ghcr.io/cm-fujikawa/dvdrental:latest .
+    docker build -t ghcr.io/cm-fujikawa/docker-postgres-dvdrental:latest .
     ```
 
 ## GitHub Container registryからDockerイメージをプル
@@ -15,7 +15,7 @@ PostreSQL公式Dockerイメージにサンプルデータベース([PostgreSQL S
 1. GitHub Container registryからDockerイメージをプルします。
 
     ```shell
-    docker pull ghcr.io/cm-fujikawa/dvdrental:latest
+    docker pull ghcr.io/cm-fujikawa/docker-postgres-dvdrental:latest
     ```
 
 ## 共通
@@ -27,7 +27,7 @@ PostreSQL公式Dockerイメージにサンプルデータベース([PostgreSQL S
         -p 5432:5432/tcp \
         -e POSTGRES_PASSWORD=mysecretpassword \
         --name dvdrental \
-        ghcr.io/cm-fujikawa/dvdrental:latest
+        ghcr.io/cm-fujikawa/docker-postgres-dvdrental:latest
     ```
 
 1. コンテナに接続します。
