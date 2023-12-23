@@ -1,11 +1,9 @@
-FROM postgres:15.5
-
-RUN apt update && \
-    apt install -y wget unzip --no-install-recommends && \
-    apt clean -y && \
-    rm -rf /var/lib/apt/lists/*
+FROM postgres:alpine
 
 WORKDIR /docker-entrypoint-initdb.d
+
+RUN apk update --no-cache && \
+    rm -rf /var/cache/apk/*
 
 RUN echo 'CREATE DATABASE dvdrental;' > 01-dvdrental.sql && \
     echo 'pg_restore -U postgres -d dvdrental /docker-entrypoint-initdb.d/dvdrental.tar' > 02-dvdrental.sh
