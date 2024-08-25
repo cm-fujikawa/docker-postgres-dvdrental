@@ -13,3 +13,6 @@ RUN wget --no-check-certificate https://www.postgresqltutorial.com/wp-content/up
     rm -f dvdrental.zip
 
 WORKDIR /
+
+HEALTHCHECK --interval=30s --timeout=10s --retries=5 \
+  CMD pg_isready -U $POSTGRES_USER || exit 1
