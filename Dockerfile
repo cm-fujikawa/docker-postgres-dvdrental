@@ -1,4 +1,4 @@
-FROM postgres:16.5-alpine3.19
+FROM postgres:16.6-alpine3.19
 
 WORKDIR /docker-entrypoint-initdb.d
 
